@@ -1,2 +1,2 @@
 # PBO-ITK
-Repository ini merupakan sekumpulan tugas-tugas Matkul PBO Prodi Informatika
+Repository ini merupakan Tugas Besar Matkul PBO Prodi Informatika
