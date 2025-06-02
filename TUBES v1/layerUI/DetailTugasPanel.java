@@ -24,6 +24,9 @@ public class DetailTugasPanel extends javax.swing.JPanel {
     private ModelLayer.Class.Task currentTask = null;
     private ModelLayer.Class.matkul contextMatkulForNewTask; // To store matkul context for a new task
 
+    // Add this field to your class (after the existing field declarations)
+    private javax.swing.ButtonGroup statusButtonGroup;
+
     /**
      * Creates new form DetailTugasPanel
      */
@@ -106,6 +109,9 @@ public class DetailTugasPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        statusButtonGroup = new javax.swing.ButtonGroup();
+        statusButtonGroup.add(jRadioButton1); // Sudah Selesai
+        statusButtonGroup.add(jRadioButton2); // Belum Selesai
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
         jLabel1.setText("TugasKu");
@@ -249,6 +255,11 @@ public class DetailTugasPanel extends javax.swing.JPanel {
                     .addComponent(jButton2))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
+
+        // Group the radio buttons for mutual exclusion
+        statusButtonGroup = new javax.swing.ButtonGroup();
+        statusButtonGroup.add(jRadioButton1); // Sudah Selesai
+        statusButtonGroup.add(jRadioButton2); // Belum Selesai
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonBackActionPerformed

@@ -102,7 +102,6 @@ public class LoginPagePanel extends javax.swing.JPanel {
         jLabel3.setText("Username");
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -110,7 +109,6 @@ public class LoginPagePanel extends javax.swing.JPanel {
         });
 
         jPasswordField1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 // Optionally, you can trigger the login action here:

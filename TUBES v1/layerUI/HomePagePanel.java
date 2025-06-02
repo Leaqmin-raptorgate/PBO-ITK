@@ -234,24 +234,31 @@ public class HomePagePanel extends javax.swing.JPanel {
         int userId = userSession.getCurrentUser().getIdUser();
         System.out.println("Loading tasks for user ID: " + userId);
 
-        List<Task> tasks = taskDAO.findByUserId(userId);
-        System.out.println("Number of tasks retrieved: " + tasks.size());
+        List<Task> allTasks = taskDAO.findByUserId(userId);
+        System.out.println("Number of tasks retrieved: " + allTasks.size());
+
+        // Filter out completed tasks (SUDAH_SELESAI)
+        List<Task> incompleteTasks = allTasks.stream()
+            .filter(task -> task.getCurrentStatus() != Enumeration.TaskStatus.SUDAH_SELESAI)
+            .toList();
+
+        System.out.println("Number of incomplete tasks: " + incompleteTasks.size());
 
         // Sort by priority descending, then by deadline ascending (nearest first)
         tugasPentingList.clear();
-        tugasPentingList.addAll(tasks.stream()
+        tugasPentingList.addAll(incompleteTasks.stream()
             .sorted(
                 Comparator.comparingInt(Task::getPriority).reversed()
                 .thenComparing(Task::getDeadline, Comparator.nullsLast(Comparator.naturalOrder()))
             )
             .toList());
 
-        // Fill jTableTugasPenting (sorted by priority and deadline)
+        // Fill jTableTugasPenting (sorted by priority and deadline, incomplete only)
         updateTableModel(tableModelTugasPenting, tugasPentingList);
 
-        // Fill jTableTugasPenting1 (sorted by deadline only)
+        // Fill jTableTugasPenting1 (sorted by deadline only, incomplete only)
         tugasDeadlineList.clear();
-        tugasDeadlineList.addAll(tasks.stream()
+        tugasDeadlineList.addAll(incompleteTasks.stream()
             .sorted(Comparator.comparing(Task::getDeadline, Comparator.nullsLast(Comparator.naturalOrder())))
             .toList());
         updateTableModel(tableModelTugasDeadline, tugasDeadlineList);
